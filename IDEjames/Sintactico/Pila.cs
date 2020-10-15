@@ -11,52 +11,60 @@ namespace IDEjames.Sintactico
 {
     class Pila
     {
-        private Nodo UltimoValorIngresado;
-        public Pila()
+        private List<int> pila;
+        private List<string> pila2;
+
+        ValorProduccionLexema valorProduccionLexema;
+
+
+        public Pila(ValorProduccionLexema valorProduccionLexema)
         {
-            UltimoValorIngresado = null;
+            pila = new List<int>();
+            pila2 = new List<string>();
+            this.valorProduccionLexema = valorProduccionLexema;
         }
 
-        //metodo para insertar dentro de una pila
-        public void Insertar(char valor)
+        public void AgregarElemento(int elemento, Arbol arbol, string valorNodoPadre)
         {
-            Nodo nuevo_nodo = new Nodo();
-            nuevo_nodo.informacion = valor;
-            if (UltimoValorIngresado == null)
-            {
-                nuevo_nodo.siguiente = null;
-                UltimoValorIngresado = nuevo_nodo;
-
-
-            }
-            else
-            {
-                nuevo_nodo.siguiente = UltimoValorIngresado;
-                UltimoValorIngresado = nuevo_nodo;
-
-            }
-
+            pila.Add(elemento);
+            string valor = valorProduccionLexema.RecuperarValorProduccionLexema(elemento);
+            pila2.Add(valor);
+            arbol.agregarCodigo(valorNodoPadre + " -> " + valor + " ; ");
         }
 
-        //Metodo para extraer de la pila
-        public char Extraer()
+        public int RecuperarUltimoElemento()
         {
-            if (UltimoValorIngresado != null)
-            {
-                char informacion = UltimoValorIngresado.informacion;
-                UltimoValorIngresado = UltimoValorIngresado.siguiente;
-                return informacion;
-            }
-            else
-            {
-                return char.MaxValue;
-            }
+            return pila.Last();
         }
-        //metodo para comprobar si la pila esta vacia
-        public Boolean PilaVacia()
+
+        public int RecuperarSize()
         {
-            return UltimoValorIngresado == null;
+            return pila.Count;
         }
+
+        public void EliminarUltimoElemento()
+        {
+            pila.RemoveAt(pila.Count - 1);
+            pila2.RemoveAt(pila2.Count - 1);
+        }
+
+        public int RecuperarElemento(int indice)
+        {
+            return pila.ElementAt(indice - 1);
+        }
+
+        public string RecuperarValorProduccionLexemaUltimoElemento()
+        {
+            return pila2.ElementAt(pila2.Count - 1);
+        }
+
+        public void Reiniciar(Arbol arbol)
+        {
+            this.pila.Clear();
+            this.AgregarElemento(Lexema.ACEPTACION, arbol, "INICIO");
+            this.AgregarElemento(Produccion.INICIAL, arbol, "INICIO");
+        }
+
 
 
     }

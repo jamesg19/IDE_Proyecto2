@@ -84,6 +84,123 @@ namespace IDEjames.Sintactico
             tabla = new int[numeroFilas, numeroColumnas][];
             AsignarValores();
         }
+        private void AsignarValores()
+        {
+            tabla[Produccion.INICIAL, Lexema.PRI] = p0;
+            tabla[Produccion.INICIAL, Lexema.PR] = p10;
+            tabla[Produccion.INICIAL, Lexema.IMP] = p12;
+            tabla[Produccion.INICIAL, Lexema.LE] = p14;
+            tabla[Produccion.INICIAL, Lexema.SI] = p16;
+            tabla[Produccion.INICIAL, Lexema.MI] = p18;
+            tabla[Produccion.INICIAL, Lexema.HA] = p20;
+            tabla[Produccion.INICIAL, Lexema.DES] = p22;
+
+
+            tabla[Produccion.MP, Lexema.PRI] = p1;
+            tabla[Produccion.MP1, Lexema.LLAVE_CIERRA] = vacio;
+            tabla[Produccion.MP1, Lexema.PR] = pm10;
+            tabla[Produccion.MP1, Lexema.IMP] = pm12;
+            tabla[Produccion.MP1, Lexema.LE] = pm14;
+            tabla[Produccion.MP1, Lexema.SI] = pm16;
+            tabla[Produccion.MP1, Lexema.MI] = pm18;
+            tabla[Produccion.MP1, Lexema.HA] = pm20;
+            tabla[Produccion.MP1, Lexema.DES] = pm22;
+
+            tabla[Produccion.I, Lexema.IMP] = p13;
+            tabla[Produccion.I1, Lexema.CAD] = p7;
+            tabla[Produccion.I1, Lexema.NUM] = p8;
+            tabla[Produccion.I1, Lexema.IDENT] = p9;
+            tabla[Produccion.I2, Lexema.PARENTESIS_CIERRA] = vacio;
+            tabla[Produccion.I2, Lexema.SIGNO_SUMA] = p5;
+            tabla[Produccion.I2, Lexema.PUNTO_COMA] = vacio;
+
+            tabla[Produccion.L, Lexema.LE] = p15;
+            tabla[Produccion.L1, Lexema.CAD] = p7;
+            tabla[Produccion.L1, Lexema.NUM] = p8;
+            tabla[Produccion.L1, Lexema.IDENT] = p9;
+
+            tabla[Produccion.VL, Lexema.PR] = p11;
+            tabla[Produccion.VL1, Lexema.IGUAL] = vacio;
+            tabla[Produccion.VL1, Lexema.COMA] = p6;
+            tabla[Produccion.VL1, Lexema.PUNTO_COMA] = vacio;
+            tabla[Produccion.VL1, Lexema.ACEPTACION] = vacio;
+            tabla[Produccion.VL2, Lexema.IGUAL] = p4;
+            tabla[Produccion.VL2, Lexema.PUNTO_COMA] = vacio;
+            tabla[Produccion.VL3, Lexema.CAD] = p7;
+            tabla[Produccion.VL3, Lexema.NUM] = p8;
+            tabla[Produccion.VL3, Lexema.IDENT] = p9;
+
+            tabla[Produccion.S, Lexema.SI] = p17;
+            tabla[Produccion.S1, Lexema.CAD] = p7;
+            tabla[Produccion.S1, Lexema.NUM] = p8;
+            tabla[Produccion.S1, Lexema.IDENT] = p9;
+            tabla[Produccion.S2, Lexema.SINO] = vacio;
+            tabla[Produccion.S2, Lexema.SINO_SI] = vacio;
+            tabla[Produccion.S2, Lexema.LLAVE_CIERRA] = vacio;
+            tabla[Produccion.S2, Lexema.PR] = ps10;
+            tabla[Produccion.S2, Lexema.IMP] = ps12;
+            tabla[Produccion.S2, Lexema.LE] = ps14;
+            tabla[Produccion.S2, Lexema.SI] = ps16;
+            tabla[Produccion.S2, Lexema.MI] = ps18;
+            tabla[Produccion.S2, Lexema.HA] = ps20;
+            tabla[Produccion.S2, Lexema.DES] = ps22;
+            tabla[Produccion.S2, Lexema.ACEPTACION] = vacio;
+            tabla[Produccion.S3, Lexema.SINO] = vacio;
+            tabla[Produccion.S3, Lexema.SINO_SI] = p3;
+            tabla[Produccion.S3, Lexema.ACEPTACION] = vacio;
+            tabla[Produccion.S4, Lexema.SINO] = p2;
+            tabla[Produccion.S4, Lexema.ACEPTACION] = vacio;
+
+            tabla[Produccion.W, Lexema.MI] = p19;
+            tabla[Produccion.W1, Lexema.CAD] = p7;
+            tabla[Produccion.W1, Lexema.NUM] = p8;
+            tabla[Produccion.W1, Lexema.IDENT] = p9;
+            tabla[Produccion.W2, Lexema.LLAVE_CIERRA] = vacio;
+            tabla[Produccion.W2, Lexema.PR] = pw10;
+            tabla[Produccion.W2, Lexema.IMP] = pw12;
+            tabla[Produccion.W2, Lexema.LE] = pw14;
+            tabla[Produccion.W2, Lexema.SI] = pw16;
+            tabla[Produccion.W2, Lexema.MI] = pw18;
+            tabla[Produccion.W2, Lexema.HA] = pw20;
+            tabla[Produccion.W2, Lexema.DES] = pw22;
+
+            tabla[Produccion.D, Lexema.HA] = p21;
+            tabla[Produccion.D0, Lexema.OPRE] = vacio;
+            tabla[Produccion.D0, Lexema.PARENTESIS_ABRE] = vacio;
+            tabla[Produccion.D0, Lexema.PARENTESIS_CIERRA] = vacio;
+            tabla[Produccion.D0, Lexema.LLAVE_CIERRA] = vacio;
+            tabla[Produccion.D0, Lexema.CAD] = vacio;
+            tabla[Produccion.D0, Lexema.NUM] = vacio;
+            tabla[Produccion.D0, Lexema.IDENT] = vacio;
+            tabla[Produccion.D0, Lexema.PR] = pd10;
+            tabla[Produccion.D0, Lexema.IMP] = pd12;
+            tabla[Produccion.D0, Lexema.LE] = pd14;
+            tabla[Produccion.D0, Lexema.SI] = pd16;
+            tabla[Produccion.D0, Lexema.MI] = pd18;
+            tabla[Produccion.D0, Lexema.HA] = pd20;
+            tabla[Produccion.D0, Lexema.DES] = pd22;
+            tabla[Produccion.D1, Lexema.CAD] = p7;
+            tabla[Produccion.D1, Lexema.NUM] = p8;
+            tabla[Produccion.D1, Lexema.IDENT] = p9;
+
+            tabla[Produccion.F, Lexema.DES] = p23;
+            tabla[Produccion.F1, Lexema.NUM] = p8;
+            tabla[Produccion.F1, Lexema.IDENT] = p9;
+            tabla[Produccion.F2, Lexema.LLAVE_CIERRA] = vacio;
+            tabla[Produccion.F2, Lexema.PR] = pf10;
+            tabla[Produccion.F2, Lexema.IMP] = pf12;
+            tabla[Produccion.F2, Lexema.LE] = pf14;
+            tabla[Produccion.F2, Lexema.SI] = pf16;
+            tabla[Produccion.F2, Lexema.MI] = pf18;
+            tabla[Produccion.F2, Lexema.HA] = pf20;
+            tabla[Produccion.F2, Lexema.DES] = pf22;
+
+        }
+
+        public int[] recuperarProduccion(int produccion, Token token)
+        {
+            return tabla[produccion, token.getTipo()];
+        }
 
 
     }

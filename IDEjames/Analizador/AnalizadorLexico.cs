@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace IDEjames
 {
-    String m;
+    
     class AnalizadorLexico
     {
         RichTextBox TextBox;

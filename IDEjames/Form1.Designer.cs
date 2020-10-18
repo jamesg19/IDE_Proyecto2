@@ -39,7 +39,7 @@
             this.eliminarArchivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SalirMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarErrorAgtEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TextBox = new System.Windows.Forms.RichTextBox();
+            this.rTxtCodigo = new System.Windows.Forms.RichTextBox();
             this.numberLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
@@ -132,21 +132,21 @@
             this.exportarErrorAgtEToolStripMenuItem.Text = "Exportar Error a .gtE";
             this.exportarErrorAgtEToolStripMenuItem.Click += new System.EventHandler(this.exportarErrorAgtEToolStripMenuItem_Click);
             // 
-            // TextBox
+            // rTxtCodigo
             // 
-            this.TextBox.AcceptsTab = true;
-            this.TextBox.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.TextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TextBox.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox.Location = new System.Drawing.Point(65, 27);
-            this.TextBox.Name = "TextBox";
-            this.TextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.TextBox.Size = new System.Drawing.Size(867, 396);
-            this.TextBox.TabIndex = 0;
-            this.TextBox.Text = "";
-            this.TextBox.VScroll += new System.EventHandler(this.TextBox_VScrollChanged);
-            this.TextBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            this.TextBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.muestraPosicion);
+            this.rTxtCodigo.AcceptsTab = true;
+            this.rTxtCodigo.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.rTxtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rTxtCodigo.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rTxtCodigo.Location = new System.Drawing.Point(65, 27);
+            this.rTxtCodigo.Name = "rTxtCodigo";
+            this.rTxtCodigo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.rTxtCodigo.Size = new System.Drawing.Size(867, 396);
+            this.rTxtCodigo.TabIndex = 0;
+            this.rTxtCodigo.Text = "";
+            this.rTxtCodigo.VScroll += new System.EventHandler(this.TextBox_VScrollChanged);
+            this.rTxtCodigo.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.rTxtCodigo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.muestraPosicion);
             // 
             // numberLabel
             // 
@@ -238,7 +238,7 @@
             this.Controls.Add(this.Posicion);
             this.Controls.Add(this.LogError);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.TextBox);
+            this.Controls.Add(this.rTxtCodigo);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -265,7 +265,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.ToolStripMenuItem SalirMenuItem1;
-        public System.Windows.Forms.RichTextBox TextBox;
+        public System.Windows.Forms.RichTextBox rTxtCodigo;
         private System.Windows.Forms.Label Posicion;
         private System.Windows.Forms.Label position;
         private System.Windows.Forms.Label Colum;

@@ -48,8 +48,8 @@
   <ItemGroup>
     <Compile Include="Analizador\AnalizadorLexico.cs" />
     <Compile Include="Analizador\boolean.cs" />
-    <Compile Include="Analizador\ClasePrueba.cs" />
     <Compile Include="Analizador\Entero.cs" />
+    <Compile Include="Analizador\Estado.cs" />
     <Compile Include="Analizador\OperadorLogic.cs" />
     <Compile Include="Analizador\Comentario.cs" />
     <Compile Include="Analizador\DatosPrimitivo.cs" />
@@ -65,10 +65,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sintactico\AnalizadorSintaxis.cs" />
+    <Compile Include="Sintactico\Lexema.cs" />
+    <Compile Include="Sintactico\PalabraReservada.cs" />
     <Compile Include="Sintactico\Produccion.cs" />
+    <Compile Include="Sintactico\Simbolo.cs" />
     <Compile Include="Sintactico\TablaAnalisisSintactico.cs" />
     <Compile Include="Sintactico\Nodo.cs" />
     <Compile Include="Sintactico\Pila.cs" />
+    <Compile Include="Sintactico\Token.cs" />
+    <Compile Include="Sintactico\ValorProduccionLexema.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

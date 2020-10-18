@@ -29,14 +29,14 @@ namespace IDEjames
         public Form1()
         {
             InitializeComponent();
-            DatosPrimitivo DatoPrimitivoCadena = new DatosPrimitivo("",TextBox);
-            Comentario Comentario = new Comentario("", TextBox);
-            OperadorLogic operadorLogico = new OperadorLogic("", TextBox);
-            OperadorAritmetico operadorAritmetico=new OperadorAritmetico("", TextBox);
-            PalabrasReservadas reservadas = new PalabrasReservadas("", TextBox);
-            OperadorRelacion opeRelacion = new OperadorRelacion("", TextBox);
-            Entero enteroo = new Entero("", TextBox);
-            boolean Booleano = new boolean("", TextBox);
+            DatosPrimitivo DatoPrimitivoCadena = new DatosPrimitivo("",rTxtCodigo);
+            Comentario Comentario = new Comentario("", rTxtCodigo);
+            OperadorLogic operadorLogico = new OperadorLogic("", rTxtCodigo);
+            OperadorAritmetico operadorAritmetico=new OperadorAritmetico("", rTxtCodigo);
+            PalabrasReservadas reservadas = new PalabrasReservadas("", rTxtCodigo);
+            OperadorRelacion opeRelacion = new OperadorRelacion("", rTxtCodigo);
+            Entero enteroo = new Entero("", rTxtCodigo);
+            boolean Booleano = new boolean("", rTxtCodigo);
             this.Datocadena = DatoPrimitivoCadena;
             this.comentario = Comentario;
             this.logico = operadorLogico;
@@ -58,31 +58,31 @@ namespace IDEjames
         private void AbrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // llama al metodo abrir de la clase archivo 
-            archivoObjeto.AbrirArchivo(TextBox);
+            archivoObjeto.AbrirArchivo(rTxtCodigo);
         }
 
         //boton para guardar un archivo
         private void GuardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // llama al metodo guardar de la clase archivo 
-            archivoObjeto.GuardaArchivo(TextBox);
+            archivoObjeto.GuardaArchivo(rTxtCodigo);
         }
         //metodo para crear nuevo archivo
         private void NuevoArchivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // llama al metodo Nuevo Archivo de la clase archivo 
             // y crea un nuevo archivo
-            archivoObjeto.NuevoArchivo(TextBox);
+            archivoObjeto.NuevoArchivo(rTxtCodigo);
         }
 
         private void guardarToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            archivoObjeto.GuardarComo(TextBox);
+            archivoObjeto.GuardarComo(rTxtCodigo);
         }
         //metodo para eliminar el archivo 
         private void eliminarArchivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            archivoObjeto.elimilarArchivo(TextBox);
+            archivoObjeto.elimilarArchivo(rTxtCodigo);
         }
 
         //Salir
@@ -119,11 +119,11 @@ namespace IDEjames
         private void muestraPosicion(object sender, MouseEventArgs e)
         {
             // Get the line. 
-            int index = TextBox.SelectionStart;
-            int line = TextBox.GetLineFromCharIndex(index);
+            int index = rTxtCodigo.SelectionStart;
+            int line = rTxtCodigo.GetLineFromCharIndex(index);
             position.Text = (line + 1) + "";
             // Get the column. 
-            int firstChar = TextBox.GetFirstCharIndexFromLine(line);
+            int firstChar = rTxtCodigo.GetFirstCharIndexFromLine(line);
             int column = index - firstChar;
             columna.Text = column + "";
 
@@ -133,40 +133,40 @@ namespace IDEjames
         {
 
             //guarda la posicion del cursor antes de pintar
-            int pos = TextBox.SelectionStart;
+            int pos = rTxtCodigo.SelectionStart;
             string[] Reservadas = new string[] { ";", "="};
 
             try
             {
                 //PONE TODO EL TEXTO EN EL COLOR POR DEFECTO(FORECOLOR)
 
-                TextBox.SelectionStart = 0;
-                TextBox.SelectionLength = TextBox.TextLength;
-                TextBox.SelectionColor = TextBox.ForeColor;
+                rTxtCodigo.SelectionStart = 0;
+                rTxtCodigo.SelectionLength = rTxtCodigo.TextLength;
+                rTxtCodigo.SelectionColor = rTxtCodigo.ForeColor;
 
                 foreach (string CLAVE in Reservadas)
                 { //COMPRUEBA CADA UNA DE LAS PALABRAS CLAVE
 
                     int INDEX = 0; //'INICIA LA BUSQUEDA DE LA CLAVE DESDE LA POSICION 0 DEL TEXTO
 
-                    while (INDEX <= TextBox.Text.LastIndexOf(CLAVE.ToString())) //'RECORRE TODO EL TEXTO BUSCANDO LA PALABRA CLAVE
+                    while (INDEX <= rTxtCodigo.Text.LastIndexOf(CLAVE.ToString())) //'RECORRE TODO EL TEXTO BUSCANDO LA PALABRA CLAVE
                     {
 
 
-                        TextBox.Find(CLAVE.ToString(), INDEX, TextBox.TextLength, RichTextBoxFinds.WholeWord); //'CUANDO LA ENCUENTRA LA SELECCIONA Y....
-                        TextBox.SelectionColor = Color.Pink; //'... LE PONE EL COLOR INDICADO
-                        INDEX = TextBox.Text.IndexOf(CLAVE, INDEX) + 1; //'AVANZA A LA SIGUIENTE UBICACION DE LA PALABRA CLAVE
+                        rTxtCodigo.Find(CLAVE.ToString(), INDEX, rTxtCodigo.TextLength, RichTextBoxFinds.WholeWord); //'CUANDO LA ENCUENTRA LA SELECCIONA Y....
+                        rTxtCodigo.SelectionColor = Color.Pink; //'... LE PONE EL COLOR INDICADO
+                        INDEX = rTxtCodigo.Text.IndexOf(CLAVE, INDEX) + 1; //'AVANZA A LA SIGUIENTE UBICACION DE LA PALABRA CLAVE
 
                     }
                 }
 
                 //CUANDO HA TERMINADO DE BUSCAR TODAS LAS PALABRAS VUELVE A LA SITUACION NORMAL (AL FINAL DEL TEXTO)
-                TextBox.SelectionStart = TextBox.TextLength;
-                TextBox.SelectionColor = TextBox.ForeColor;
+                rTxtCodigo.SelectionStart = rTxtCodigo.TextLength;
+                rTxtCodigo.SelectionColor = rTxtCodigo.ForeColor;
 
                 // establece el valor del cursor donde se encontraba antes de pintar la palabra con color
-                TextBox.SelectionStart = pos;
-                TextBox.SelectionLength = 0;
+                rTxtCodigo.SelectionStart = pos;
+                rTxtCodigo.SelectionLength = 0;
 
             }
             catch (Exception ex)
@@ -176,17 +176,17 @@ namespace IDEjames
             try
             {
                 //agrega las linea
-                for (int i = 0; i < TextBox.Lines.Length; i++)
+                for (int i = 0; i < rTxtCodigo.Lines.Length; i++)
                 {
                     
-                    enteroo.Inicial(TextBox.Lines[i], TextBox);
-                    Booleano.Inicio(TextBox.Lines[i], TextBox);
-                    operadorAritmetico1.Inicial(TextBox.Lines[i], TextBox);
-                    reservadas.Inicio(TextBox.Lines[i], TextBox);
-                    Datocadena.Inicial(TextBox.Lines[i], TextBox);
-                    logico.Inicial(TextBox.Lines[i], TextBox);
-                    opeRelacion.Inicial(TextBox.Lines[i], TextBox);
-                    comentario.Inicial(TextBox.Lines[i], TextBox,LogError,i+1);
+                    enteroo.Inicial(rTxtCodigo.Lines[i], rTxtCodigo);
+                    Booleano.Inicio(rTxtCodigo.Lines[i], rTxtCodigo);
+                    operadorAritmetico1.Inicial(rTxtCodigo.Lines[i], rTxtCodigo);
+                    reservadas.Inicio(rTxtCodigo.Lines[i], rTxtCodigo);
+                    Datocadena.Inicial(rTxtCodigo.Lines[i], rTxtCodigo);
+                    logico.Inicial(rTxtCodigo.Lines[i], rTxtCodigo);
+                    opeRelacion.Inicial(rTxtCodigo.Lines[i], rTxtCodigo);
+                    comentario.Inicial(rTxtCodigo.Lines[i], rTxtCodigo,LogError,i+1);
 
                 }
             }

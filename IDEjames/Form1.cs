@@ -208,7 +208,13 @@ namespace IDEjames
         {
             Determina_Lexema();
         }
+        public void AnalizarCodigo()
+        {
 
+            AnalizadorSintaxis analizadorSintaxis = new AnalizadorSintaxis();
+            analizadorSintaxis.Analizar(analizadorTexto.getTokens());
+
+        }
 
     }
 

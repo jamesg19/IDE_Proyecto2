@@ -66,6 +66,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sintactico\AnalizadorSintaxis.cs" />
+    <Compile Include="Sintactico\AnalizaSintactico.cs" />
     <Compile Include="Sintactico\Lexema.cs" />
     <Compile Include="Sintactico\PalabraReservada.cs" />
     <Compile Include="Sintactico\Produccion.cs" />

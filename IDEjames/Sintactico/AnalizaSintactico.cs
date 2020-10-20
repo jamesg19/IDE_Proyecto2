@@ -41,6 +41,10 @@ namespace IDEjames.Sintactico
                 {
                     Console.WriteLine("VUELTA: " + vuelta);
 
+                    SolicitarLexema(vuelta, tokens);
+
+                    VerificarAnulabilidad();
+                    SolicitarProduccion();
                 }
             }
             catch
@@ -64,6 +68,115 @@ namespace IDEjames.Sintactico
 
         }
 
+        private void SolicitarProduccion()
+        {
+            if (lexemaActual != null)
+            {
+                Console.WriteLine("SOLICITANDO PRODUCCION");
+
+                produccionActual = pila.RecuperarUltimoElemento();
+                Console.WriteLine("PRODUCCION ACTUAL: " + produccionActual);
+                Console.WriteLine("LEXEMA ACTUAL: " + lexemaActual.getTipo());
+                produccion = tablaAnalisisSintactico.recuperarProduccion(produccionActual, lexemaActual);
+
+                //ANTES ELIMINAMOS LA PRODUCCION ANCTUAL PARA REALIZAR EL SHIFT
+                //pila.EliminarUltimoElemento();
+
+                AgregarProduccionPila(produccion);
+
+                VerificarAnulabilidad();
+            }
+
+
+
+        }
+
+        private void VerificarAnulabilidad()
+        {
+            if (lexemaActual != null)
+            {
+                Console.WriteLine("VERIFICANDO ANULABILIDAD");
+                Console.WriteLine("TIPO LEXEMA: " + lexemaActual.getTipo());
+                Console.WriteLine("TIPO ELEMENTO PILA: " + pila.RecuperarUltimoElemento());
+                if (lexemaActual.getTipo() == pila.RecuperarUltimoElemento())
+                {
+                    Reduce();
+                }
+                else
+                {
+                    Shift();
+                }
+            }
+
+        }
+
+        private void SolicitarLexema(int posicion, List<Token> tokens)
+        {
+            Console.WriteLine("SOLICITANDO LEXEMA");
+            lexemaActual = Lexema.FiltroLexema(tokens.ElementAt(posicion));
+            Console.WriteLine("LEXEMA OBTENIDO: " + lexemaActual.getTipo());
+        }
+
+        private void AgregarProduccionPila(int[] produccion)
+        {
+            Console.WriteLine("AGREGANDO PRODUCCION A LA PILA");
+            if (produccion != null)
+            {
+                pila.EliminarUltimoElemento();
+                if (produccion.Length == 0)
+                {
+                    pila.AgregarElemento(Lexema.VACIO);
+                    ReduceVacio();
+                    VerificarAnulabilidad();
+                }
+                else
+                {
+                    for (int i = produccion.Length; i > 0; i--)
+                    {
+                        pila.AgregarElemento(produccion[i - 1]);
+                    }
+                }
+            }
+            else
+            {
+                //PUEDE GENERAR ERRORES EN ESTE BLOQUE
+                Console.WriteLine("NO HAY PRODUCCION DISPONIBLE");
+                throw new Exception();
+            }
+
+
+        }
+
+        private void Reduce()
+        {
+            Console.WriteLine("REDUCE");
+            lexemaActual = null;
+            pila.EliminarUltimoElemento();
+            vuelta++;
+
+        }
+
+        private void ReduceVacio()
+        {
+            Console.WriteLine("REDUCE VACIO");
+            pila.EliminarUltimoElemento();
+        }
+
+        private void Shift()
+        {
+            if (pila.RecuperarUltimoElemento() > 99)
+            {
+                Console.WriteLine("SHIFT");
+                SolicitarProduccion();
+                VerificarAnulabilidad();
+            }
+            else
+            {
+                Console.WriteLine("NO SE PUEDE REALIZAR EL REDUCE");
+                throw new Exception();
+            }
+
+        }
 
 
     }

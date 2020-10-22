@@ -1,4 +1,5 @@
 ﻿using IDEjames.Analizador;
+using IDEjames.Sintactico;
 using System;
 using System.Collections;
 using System.Collections.Generic;

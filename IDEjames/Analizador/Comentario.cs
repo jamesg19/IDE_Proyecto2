@@ -238,7 +238,7 @@ namespace IDEjames.Analizador
         }
         public void finalEstado()
         {
-            LogError.Text += "Error de token [" + NLinea + "] \n";
+            //LogError.Text += "Error de token [" + NLinea + "] \n";
         }
     }
 }

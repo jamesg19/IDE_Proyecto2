@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -71,7 +72,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sintactico\AnalizadorSintaxis.cs" />
-    <Compile Include="Sintactico\AnalizaSintactico.cs" />
     <Compile Include="Sintactico\Estado.cs" />
     <Compile Include="Sintactico\Lexema.cs" />
     <Compile Include="Sintactico\PalabraReservada.cs" />

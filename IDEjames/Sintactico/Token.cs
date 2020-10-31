@@ -48,6 +48,7 @@ namespace IDEjames.Sintactico
         private string Palabra;
         private int Tipo;
         private Brush Color;
+        private int fila;
 
 
         public Token()
@@ -61,6 +62,15 @@ namespace IDEjames.Sintactico
             this.Palabra = Palabra;
             this.Tipo = Tipo;
             this.Color = Color;
+        }
+
+        public Token(string Palabra, int Tipo, Brush Color, int fila)
+        {
+            simbolo = new Simbolo();
+            this.Palabra = Palabra;
+            this.Tipo = Tipo;
+            this.Color = Color;
+            this.fila = fila;
         }
 
 
@@ -172,6 +182,15 @@ namespace IDEjames.Sintactico
             this.Color = color;
         }
 
+        public void setFila(int fila)
+        {
+            this.fila = fila;
+        }
+
+        public int getFila()
+        {
+            return this.fila;
+        }
 
         public string getPalabra()
         {

@@ -39,18 +39,16 @@
             this.eliminarArchivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SalirMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarErrorAgtEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rTxtCodigo = new System.Windows.Forms.RichTextBox();
-            this.numberLabel = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.Posicion = new System.Windows.Forms.Label();
             this.position = new System.Windows.Forms.Label();
             this.Colum = new System.Windows.Forms.Label();
             this.columna = new System.Windows.Forms.Label();
-            this.LogError = new System.Windows.Forms.RichTextBox();
             this.Compilar = new System.Windows.Forms.Button();
+            this.rTxtCodigo = new System.Windows.Forms.RichTextBox();
+            this.lblErrores = new System.Windows.Forms.Label();
+            this.rTxtErrores = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -132,45 +130,10 @@
             this.exportarErrorAgtEToolStripMenuItem.Text = "Exportar Error a .gtE";
             this.exportarErrorAgtEToolStripMenuItem.Click += new System.EventHandler(this.exportarErrorAgtEToolStripMenuItem_Click);
             // 
-            // rTxtCodigo
-            // 
-            this.rTxtCodigo.AcceptsTab = true;
-            this.rTxtCodigo.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.rTxtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rTxtCodigo.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rTxtCodigo.Location = new System.Drawing.Point(65, 27);
-            this.rTxtCodigo.Name = "rTxtCodigo";
-            this.rTxtCodigo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.rTxtCodigo.Size = new System.Drawing.Size(867, 396);
-            this.rTxtCodigo.TabIndex = 0;
-            this.rTxtCodigo.Text = "";
-            this.rTxtCodigo.VScroll += new System.EventHandler(this.TextBox_VScrollChanged);
-            this.rTxtCodigo.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            this.rTxtCodigo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.muestraPosicion);
-            // 
-            // numberLabel
-            // 
-            this.numberLabel.AutoSize = true;
-            this.numberLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numberLabel.Location = new System.Drawing.Point(31, 2);
-            this.numberLabel.Name = "numberLabel";
-            this.numberLabel.Size = new System.Drawing.Size(17, 19);
-            this.numberLabel.TabIndex = 1;
-            this.numberLabel.Text = "1";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Controls.Add(this.numberLabel);
-            this.panel1.Location = new System.Drawing.Point(13, 30);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(46, 393);
-            this.panel1.TabIndex = 2;
-            // 
             // Posicion
             // 
             this.Posicion.AutoSize = true;
-            this.Posicion.Location = new System.Drawing.Point(69, 434);
+            this.Posicion.Location = new System.Drawing.Point(71, 401);
             this.Posicion.Name = "Posicion";
             this.Posicion.Size = new System.Drawing.Size(32, 13);
             this.Posicion.TabIndex = 4;
@@ -179,7 +142,7 @@
             // position
             // 
             this.position.AutoSize = true;
-            this.position.Location = new System.Drawing.Point(117, 434);
+            this.position.Location = new System.Drawing.Point(119, 401);
             this.position.Name = "position";
             this.position.Size = new System.Drawing.Size(25, 13);
             this.position.TabIndex = 5;
@@ -188,7 +151,7 @@
             // Colum
             // 
             this.Colum.AutoSize = true;
-            this.Colum.Location = new System.Drawing.Point(162, 434);
+            this.Colum.Location = new System.Drawing.Point(164, 401);
             this.Colum.Name = "Colum";
             this.Colum.Size = new System.Drawing.Size(51, 13);
             this.Colum.TabIndex = 6;
@@ -197,27 +160,16 @@
             // columna
             // 
             this.columna.AutoSize = true;
-            this.columna.Location = new System.Drawing.Point(229, 434);
+            this.columna.Location = new System.Drawing.Point(231, 401);
             this.columna.Name = "columna";
             this.columna.Size = new System.Drawing.Size(25, 13);
             this.columna.TabIndex = 7;
             this.columna.Text = "___";
             // 
-            // LogError
-            // 
-            this.LogError.AcceptsTab = true;
-            this.LogError.Location = new System.Drawing.Point(65, 469);
-            this.LogError.Name = "LogError";
-            this.LogError.ReadOnly = true;
-            this.LogError.Size = new System.Drawing.Size(867, 157);
-            this.LogError.TabIndex = 3;
-            this.LogError.Text = "";
-            this.LogError.TextChanged += new System.EventHandler(this.LogError_TextChanged);
-            // 
             // Compilar
             // 
             this.Compilar.BackColor = System.Drawing.Color.YellowGreen;
-            this.Compilar.Location = new System.Drawing.Point(366, 429);
+            this.Compilar.Location = new System.Drawing.Point(362, 392);
             this.Compilar.Name = "Compilar";
             this.Compilar.Size = new System.Drawing.Size(116, 34);
             this.Compilar.TabIndex = 8;
@@ -225,20 +177,50 @@
             this.Compilar.UseVisualStyleBackColor = false;
             this.Compilar.Click += new System.EventHandler(this.button1_Click);
             // 
+            // rTxtCodigo
+            // 
+            this.rTxtCodigo.AcceptsTab = true;
+            this.rTxtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rTxtCodigo.Location = new System.Drawing.Point(72, 30);
+            this.rTxtCodigo.Name = "rTxtCodigo";
+            this.rTxtCodigo.Size = new System.Drawing.Size(850, 356);
+            this.rTxtCodigo.TabIndex = 9;
+            this.rTxtCodigo.Text = "";
+            this.rTxtCodigo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.muestraPosicion);
+            this.rTxtCodigo.TextChanged += new System.EventHandler(this.rTxtCodigo_TextChanged);
+            // 
+            // lblErrores
+            // 
+            this.lblErrores.AutoSize = true;
+            this.lblErrores.Location = new System.Drawing.Point(593, 401);
+            this.lblErrores.Name = "lblErrores";
+            this.lblErrores.Size = new System.Drawing.Size(22, 13);
+            this.lblErrores.TabIndex = 10;
+            this.lblErrores.Text = ".....";
+            this.lblErrores.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // rTxtErrores
+            // 
+            this.rTxtErrores.Location = new System.Drawing.Point(80, 439);
+            this.rTxtErrores.Name = "rTxtErrores";
+            this.rTxtErrores.Size = new System.Drawing.Size(842, 146);
+            this.rTxtErrores.TabIndex = 11;
+            this.rTxtErrores.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(944, 609);
+            this.Controls.Add(this.rTxtErrores);
+            this.Controls.Add(this.lblErrores);
+            this.Controls.Add(this.rTxtCodigo);
             this.Controls.Add(this.Compilar);
             this.Controls.Add(this.columna);
             this.Controls.Add(this.Colum);
             this.Controls.Add(this.position);
             this.Controls.Add(this.Posicion);
-            this.Controls.Add(this.LogError);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.rTxtCodigo);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -247,8 +229,6 @@
             this.Text = "Compilador de Codigo 2.0 <James></James>";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,20 +241,19 @@
         private System.Windows.Forms.ToolStripMenuItem AbrirMenuItem;
         private System.Windows.Forms.ToolStripMenuItem GuardarMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.Label numberLabel;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.ToolStripMenuItem SalirMenuItem1;
-        public System.Windows.Forms.RichTextBox rTxtCodigo;
         private System.Windows.Forms.Label Posicion;
         private System.Windows.Forms.Label position;
         private System.Windows.Forms.Label Colum;
         private System.Windows.Forms.Label columna;
         private System.Windows.Forms.ToolStripMenuItem GuardarcomoMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarArchivoToolStripMenuItem;
-        private System.Windows.Forms.RichTextBox LogError;
         private System.Windows.Forms.Button Compilar;
         private System.Windows.Forms.ToolStripMenuItem exportarErrorAgtEToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox rTxtCodigo;
+        private System.Windows.Forms.Label lblErrores;
+        private System.Windows.Forms.RichTextBox rTxtErrores;
     }
 }
 

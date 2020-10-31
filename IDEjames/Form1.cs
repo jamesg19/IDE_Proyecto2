@@ -8,8 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Windows.Forms; 
-
+using System.Windows.Controls;
+using System.Windows.Forms;
 
 namespace IDEjames
 {
@@ -22,6 +22,7 @@ namespace IDEjames
         Comentario comentario;
         OperadorRelacion opeRelacion;
         Entero enteroo;
+        AnalizadorTexto analizador;
         PalabrasReservadas reservadas;
         boolean Booleano;
         string archivo;
@@ -38,6 +39,7 @@ namespace IDEjames
             OperadorRelacion opeRelacion = new OperadorRelacion("", rTxtCodigo);
             Entero enteroo = new Entero("", rTxtCodigo);
             boolean Booleano = new boolean("", rTxtCodigo);
+            analizador = new AnalizadorTexto();
             this.Datocadena = DatoPrimitivoCadena;
             this.comentario = Comentario;
             this.logico = operadorLogico;
@@ -102,19 +104,14 @@ namespace IDEjames
                 return;
             }
         }
+
         //metodo para guardar el error en archivo de texto .gtE
         private void exportarErrorAgtEToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            archivoObjeto.GuardarError(LogError);
+            archivoObjeto.GuardarError(rTxtErrores);
 
         }
 
-
-        // metodo para sincronizar el richtextBox con el label de numero de linea
-        private void TextBox_VScrollChanged(object sender, EventArgs e)
-        {
-
-        }
 
         //muestra la pocion del cursos en cuarquier momento
         private void muestraPosicion(object sender, MouseEventArgs e)
@@ -127,6 +124,14 @@ namespace IDEjames
             int firstChar = rTxtCodigo.GetFirstCharIndexFromLine(line);
             int column = index - firstChar;
             columna.Text = column + "";
+
+        }
+
+        public void Analisis()
+        {
+
+            AnalizadorSintaxis analizadorSintaxis = new AnalizadorSintaxis();
+            analizadorSintaxis.Analizar(analizador.getTokens());
 
         }
 
@@ -173,7 +178,7 @@ namespace IDEjames
             catch (Exception ex)
             {
             }
-            LogError.Text = "";
+            
             try
             {
                 //agrega las linea
@@ -187,7 +192,7 @@ namespace IDEjames
                     Datocadena.Inicial(rTxtCodigo.Lines[i], rTxtCodigo);
                     logico.Inicial(rTxtCodigo.Lines[i], rTxtCodigo);
                     opeRelacion.Inicial(rTxtCodigo.Lines[i], rTxtCodigo);
-                    comentario.Inicial(rTxtCodigo.Lines[i], rTxtCodigo,LogError,i+1);
+                    comentario.Inicial(rTxtCodigo.Lines[i], rTxtCodigo,rTxtErrores,i+1);
 
                 }
             }
@@ -198,25 +203,53 @@ namespace IDEjames
 
         }
 
-
-
-        private void LogError_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            Determina_Lexema();
+            string codigo = rTxtCodigo.Text;
+            String error = rTxtErrores.Text;
+           
+            //limpia el campo de error
+            limpia_error();
+
+            List<String> Errores = analizador.AnalizarCodigo(codigo, rTxtErrores);
+
+            lblErrores.Text = "ERRORES: " + Errores.Count();
+            AgregarErrores( Errores);
+
+
+ 
+            //analizador sintactico
+            Analisis();
+            //lexico
+            //Determina_Lexema();
         }
-        public void AnalizarCodigo()
+
+        //agregar errores
+        public void AgregarErrores( List<String> errores)
+        {
+            lblErrores.Text = "ERRORES: " + errores.Count();
+            for (int i = 0; i < errores.Count(); i++)
+            {
+                rTxtErrores.Text += "ERROR " + i + " : " + errores.ElementAt(i) + "\r";
+            }
+
+        }
+
+        // metodo para eliminar el texto en el campo error
+        public void limpia_error()
+        {
+            rTxtErrores.Text = "";
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
-            AnalizadorSintaxis analizadorSintaxis = new AnalizadorSintaxis();
-            analizadorSintaxis.Analizar(analizadorTexto.getTokens());
-
         }
 
+        private void rTxtCodigo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

@@ -44,43 +44,47 @@ namespace IDEjames.Sintactico
         {
             if (token.getTipo() == Token.palabraReservada)
             {
-                return new Token(token.getPalabra(), TipoDePalabraReservada(token.getPalabra()), null);
+                return new Token(token.getPalabra(), TipoDePalabraReservada(token.getPalabra()), null, token.getFila());
             }
             else if (token.getTipo() == Token.identificador)
             {
-                return new Token(token.getPalabra(), Lexema.IDENT, null);
+                return new Token(token.getPalabra(), Lexema.IDENT, null, token.getFila());
             }
             else if (token.getTipo() == Token.signoAgrupacion)
             {
-                return new Token(token.getPalabra(), TipoDeSignoDeAgrupacion(token.getPalabra()), null);
+                return new Token(token.getPalabra(), TipoDeSignoDeAgrupacion(token.getPalabra()), null, token.getFila());
             }
             else if (token.getTipo() == Lexema.ACEPTACION)
             {
-                return new Token(null, Lexema.ACEPTACION, null);
+                return new Token(null, Lexema.ACEPTACION, null, token.getFila());
             }
             else if (token.getTipo() == Token.numero)
             {
-                return new Token(null, Lexema.NUM, null);
+                return new Token(null, Lexema.NUM, null, token.getFila());
             }
             else if (token.getTipo() == Token.signoPuntoYComa)
             {
-                return new Token(null, Lexema.PUNTO_COMA, null);
+                return new Token(null, Lexema.PUNTO_COMA, null, token.getFila());
             }
             else if (token.getTipo() == Token.signoComa)
             {
-                return new Token(null, Lexema.COMA, null);
+                return new Token(null, Lexema.COMA, null, token.getFila());
             }
             else if (token.getTipo() == Token.operadorAritmetico)
             {
-                return new Token(token.getPalabra(), TipoDeSignoAritmetico(token.getPalabra()), null);
+                return new Token(token.getPalabra(), TipoDeSignoAritmetico(token.getPalabra()), null, token.getFila());
+            }
+            else if (token.getTipo() == Token.operadorRelacional)
+            {
+                return new Token(token.getPalabra(), Lexema.OPRE, null, token.getFila());
             }
             else if (token.getTipo() == Token.signoIgual)
             {
-                return new Token(token.getPalabra(), Lexema.IGUAL, null);
+                return new Token(token.getPalabra(), Lexema.IGUAL, null, token.getFila());
             }
             else if (token.getTipo() == Token.cadena)
             {
-                return new Token(token.getPalabra(), Lexema.CAD, null);
+                return new Token(token.getPalabra(), Lexema.CAD, null, token.getFila());
             }
             else
             {
@@ -121,6 +125,18 @@ namespace IDEjames.Sintactico
             else if (PalabraReservada.INCREMENTO.Equals(palabraReservada))
             {
                 return Lexema.INC;
+            }
+            else if (PalabraReservada.SI.Equals(palabraReservada))
+            {
+                return Lexema.SI;
+            }
+            else if (PalabraReservada.SINO.Equals(palabraReservada))
+            {
+                return Lexema.SINO;
+            }
+            else if (PalabraReservada.SINO_SI.Equals(palabraReservada))
+            {
+                return Lexema.SINO_SI;
             }
             else
             {

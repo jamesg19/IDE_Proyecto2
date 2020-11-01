@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\packages"
+    "\\IDEjames",
+    "\\IDEjames\\Consola",
+    "\\IDEjames\\Sintactico"
   ],
+  "SelectedNode": "\\IDEjames\\Consola\\ConsolaCMD.cs",
   "PreviewInSolutionExplorer": false
 }

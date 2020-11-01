@@ -221,9 +221,9 @@ namespace IDEjames
             //analizador sintactico
             Analisis();
             //lexico
-            //Determina_Lexema();
+            Determina_Lexema();
         }
-
+        
         //agregar errores
         public void AgregarErrores( List<String> errores)
         {

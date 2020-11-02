@@ -30,7 +30,7 @@ namespace IDEjames.Arbol
         {
             this.codigo += " } ";
         }
-    }
+    
 
 }
 }

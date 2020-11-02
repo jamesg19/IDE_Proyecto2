@@ -12,15 +12,22 @@ namespace IDEjames.Sintactico
     class Pila
     {
         private List<int> pila;
+        private List<string> pila2;
 
-        public Pila()
+        ValorProduccionLexema valorProduccionLexema;
+
+
+        public Pila(ValorProduccionLexema valorProduccionLexema)
         {
             pila = new List<int>();
+            pila2 = new List<string>();
+            this.valorProduccionLexema = valorProduccionLexema;
         }
 
         public void AgregarElemento(int elemento)
         {
             pila.Add(elemento);
+            pila2.Add(valorProduccionLexema.RecuperarValorProduccionLexema(elemento));
         }
 
         public int RecuperarUltimoElemento()
@@ -36,6 +43,7 @@ namespace IDEjames.Sintactico
         public void EliminarUltimoElemento()
         {
             pila.RemoveAt(pila.Count - 1);
+            pila2.RemoveAt(pila2.Count - 1);
         }
 
         public int RecuperarElemento(int indice)
@@ -43,11 +51,16 @@ namespace IDEjames.Sintactico
             return pila.ElementAt(indice - 1);
         }
 
+        public string RecuperarValorProduccionLexemaUltimoElemento()
+        {
+            return pila2.ElementAt(pila2.Count - 1);
+        }
+
         public void Reiniciar()
         {
             this.pila.Clear();
-            this.pila.Add(Lexema.ACEPTACION);
-            this.pila.Add(Produccion.INICIAL);
+            this.AgregarElemento(Lexema.ACEPTACION);
+            this.AgregarElemento(Produccion.INICIAL);
         }
 
 

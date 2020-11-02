@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using IDEjames.Arbol;
 
 namespace IDEjames.Sintactico
 {
@@ -19,14 +20,18 @@ namespace IDEjames.Sintactico
         Token lexemaActual;
         Pila pila;
         int vuelta;
-        int [] produccion;
+        int[] produccion;
         List<int> errores;
+        ValorProduccionLexema valorProduccionLexema;   
+        Arbol arbol;
 
         public AnalizadorSintaxis()
         {
+            arbol = new Arbol();
+            valorProduccionLexema = new ValorProduccionLexema();
             tablaAnalisisSintactico = new TablaAnalisisSintactico();
             produccionActual = Produccion.INICIAL;
-            pila = new Pila();
+            pila = new Pila(valorProduccionLexema);
             errores = new List<int>();
 
         }
@@ -34,9 +39,9 @@ namespace IDEjames.Sintactico
         public void Analizar(List<Token> tokens)
         {
             //IMPRIMIENDO NUMERO DE TOKENS
-            Console.WriteLine("NUMERO DE TOKENS: "+tokens.Count());
+            Console.WriteLine("NUMERO DE TOKENS: " + tokens.Count());
             //AGREGANDO ESTADO FINAL EN LOS TOKENS
-            tokens.Add(new Token(null, Lexema.ACEPTACION,null));
+            tokens.Add(new Token(null, Lexema.ACEPTACION, null));
             //PROBANDO
 
             pila.Reiniciar();
@@ -46,20 +51,20 @@ namespace IDEjames.Sintactico
             vuelta = 0;
             try
             {
-                Console.WriteLine("TAMANO: "+tokens.Count());
+                Console.WriteLine("TAMANO: " + tokens.Count());
                 Avanzar(tokens);
             }
             catch
             {
-                SegundoAvanzar(tokens); 
+                SegundoAvanzar(tokens);
             }
 
 
-            
 
+            arbol.CerrarArbol();
 
             //MOSTRANDO SI HAY ERRORES SINTACTICOS
-            if (pila.RecuperarSize()==0||errores.Count()==0)
+            if (pila.RecuperarSize() == 0 || errores.Count() == 0)
             {
                 Console.WriteLine("\n\n\nNO HAY ERRORES SINTACTICOS");
             }
@@ -106,12 +111,12 @@ namespace IDEjames.Sintactico
             {
                 throw new Exception();
             }
-            
+
         }
 
         private void SolicitarProduccion()
         {
-            if (lexemaActual!=null)
+            if (lexemaActual != null)
             {
                 Console.WriteLine("SOLICITANDO PRODUCCION");
 
@@ -127,8 +132,8 @@ namespace IDEjames.Sintactico
 
                 VerificarAnulabilidad();
             }
-            
-            
+
+
 
         }
 
@@ -148,21 +153,28 @@ namespace IDEjames.Sintactico
                     Shift();
                 }
             }
-                
+
         }
 
         private void SolicitarLexema(int posicion, List<Token> tokens)
         {
             Console.WriteLine("SOLICITANDO LEXEMA");
             lexemaActual = Lexema.FiltroLexema(tokens.ElementAt(posicion));
-            Console.WriteLine("LEXEMA OBTENIDO: "+lexemaActual.getTipo());
+            Console.WriteLine("LEXEMA OBTENIDO: " + lexemaActual.getTipo());
         }
 
         private void AgregarProduccionPila(int[] produccion)
         {
             Console.WriteLine("AGREGANDO PRODUCCION A LA PILA");
-            if (produccion!=null)
+            if (produccion != null)
             {
+                //AGREGANDO NODOS AL ARBOL
+                //------------------------------------------
+
+                arbol.agregarCodigo(FiltroProduccionLexema.AgregarNodos(produccion, pila.RecuperarValorProduccionLexemaUltimoElemento(), valorProduccionLexema));
+
+                //------------------------------------------
+
                 pila.EliminarUltimoElemento();
                 if (produccion.Length == 0)
                 {
@@ -174,6 +186,8 @@ namespace IDEjames.Sintactico
                 {
                     for (int i = produccion.Length; i > 0; i--)
                     {
+                        //AGREGANDO VALOR ESTABLECIDO DEL TOKEN
+
                         pila.AgregarElemento(produccion[i - 1]);
                     }
                 }
@@ -184,8 +198,8 @@ namespace IDEjames.Sintactico
                 Console.WriteLine("NO HAY PRODUCCION DISPONIBLE");
                 throw new Exception();
             }
-            
-            
+
+
         }
 
         private void Reduce()
@@ -194,7 +208,7 @@ namespace IDEjames.Sintactico
             lexemaActual = null;
             pila.EliminarUltimoElemento();
             vuelta++;
-            
+
         }
 
         private void ReduceVacio()
@@ -205,7 +219,7 @@ namespace IDEjames.Sintactico
 
         private void Shift()
         {
-            if (pila.RecuperarUltimoElemento()>99)
+            if (pila.RecuperarUltimoElemento() > 99)
             {
                 Console.WriteLine("SHIFT");
                 SolicitarProduccion();
@@ -216,28 +230,28 @@ namespace IDEjames.Sintactico
                 Console.WriteLine("NO SE PUEDE REALIZAR EL REDUCE");
                 throw new Exception();
             }
-            
+
         }
 
 
 
 
         //ERRORES SINTACTICOS
-        public void MostrarErrores(RichTextBox richTextBox, DependencyProperty dependencyProperty ,Object objetoUnderline)
+        public void MostrarErrores(RichTextBox richTextBox, DependencyProperty dependencyProperty, Object objetoUnderline)
         {
-            for (int i=0; i<errores.Count();i++)
+            for (int i = 0; i < errores.Count(); i++)
             {
-                SubrayarError(richTextBox, dependencyProperty, objetoUnderline,errores.ElementAt(i));
+                SubrayarError(richTextBox, dependencyProperty, objetoUnderline, errores.ElementAt(i));
             }
         }
 
         private void SubrayarError(RichTextBox richTextBox, DependencyProperty dependencyProperty, Object objetoUnderline, int fila)
         {
-            Console.WriteLine("ESTE ES EL NUMERO DE FILA: "+fila);
+            Console.WriteLine("ESTE ES EL NUMERO DE FILA: " + fila);
             try
             {
                 TextPointer inicio = richTextBox.Selection.Start.GetLineStartPosition(fila);
-                TextPointer fin = richTextBox.Selection.Start.GetLineStartPosition(fila+1);
+                TextPointer fin = richTextBox.Selection.Start.GetLineStartPosition(fila + 1);
                 richTextBox.Selection.Select(inicio, fin);
                 richTextBox.Selection.ApplyPropertyValue(dependencyProperty, objetoUnderline);
             }
@@ -245,7 +259,7 @@ namespace IDEjames.Sintactico
             {
                 try
                 {
-                    TextPointer inicio = richTextBox.Selection.Start.GetLineStartPosition(fila);
+                    TextPointer inicio = richTextBox.Selection.Start.GetLineStartPosition(fila - 1);
                     TextPointer fin = richTextBox.Selection.Start.GetLineStartPosition(fila);
                     richTextBox.Selection.Select(inicio, fin);
                     richTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, objetoUnderline);
@@ -254,8 +268,15 @@ namespace IDEjames.Sintactico
                 {
 
                 }
-                
+
             }
+
+        }
+
+
+        public Arbol GetArbol()
+        {
+            return arbol;
         }
 
     }

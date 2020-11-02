@@ -62,7 +62,9 @@
     <Compile Include="Analizador\OperadorRelacion.cs" />
     <Compile Include="Analizador\PalabrasReservadas.cs" />
     <Compile Include="Analizador\Tabla.cs" />
-    <Compile Include="Arbol\Arbol.cs" />
+    <Compile Include="Arbol\arboll.cs" />
+    <Compile Include="Arbol\ControladorConsola.cs" />
+    <Compile Include="Arbol\FiltroProduccionLexema.cs" />
     <Compile Include="Archivo.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

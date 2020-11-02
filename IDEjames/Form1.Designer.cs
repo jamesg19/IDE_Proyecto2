@@ -48,6 +48,7 @@
             this.rTxtCodigo = new System.Windows.Forms.RichTextBox();
             this.lblErrores = new System.Windows.Forms.Label();
             this.rTxtErrores = new System.Windows.Forms.RichTextBox();
+            this.Arbol = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -169,7 +170,8 @@
             // Compilar
             // 
             this.Compilar.BackColor = System.Drawing.Color.YellowGreen;
-            this.Compilar.Location = new System.Drawing.Point(362, 392);
+            this.Compilar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Compilar.Location = new System.Drawing.Point(435, 390);
             this.Compilar.Name = "Compilar";
             this.Compilar.Size = new System.Drawing.Size(116, 34);
             this.Compilar.TabIndex = 8;
@@ -192,7 +194,7 @@
             // lblErrores
             // 
             this.lblErrores.AutoSize = true;
-            this.lblErrores.Location = new System.Drawing.Point(593, 401);
+            this.lblErrores.Location = new System.Drawing.Point(287, 401);
             this.lblErrores.Name = "lblErrores";
             this.lblErrores.Size = new System.Drawing.Size(22, 13);
             this.lblErrores.TabIndex = 10;
@@ -207,12 +209,26 @@
             this.rTxtErrores.TabIndex = 11;
             this.rTxtErrores.Text = "";
             // 
+            // Arbol
+            // 
+            this.Arbol.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.Arbol.BackColor = System.Drawing.Color.YellowGreen;
+            this.Arbol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Arbol.Location = new System.Drawing.Point(577, 390);
+            this.Arbol.Name = "Arbol";
+            this.Arbol.Size = new System.Drawing.Size(187, 34);
+            this.Arbol.TabIndex = 12;
+            this.Arbol.Text = "General Imagen Arbol";
+            this.Arbol.UseVisualStyleBackColor = false;
+            this.Arbol.Click += new System.EventHandler(this.Arbol_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(944, 609);
+            this.Controls.Add(this.Arbol);
             this.Controls.Add(this.rTxtErrores);
             this.Controls.Add(this.lblErrores);
             this.Controls.Add(this.rTxtCodigo);
@@ -254,6 +270,7 @@
         private System.Windows.Forms.RichTextBox rTxtCodigo;
         private System.Windows.Forms.Label lblErrores;
         private System.Windows.Forms.RichTextBox rTxtErrores;
+        private System.Windows.Forms.Button Arbol;
     }
 }
 

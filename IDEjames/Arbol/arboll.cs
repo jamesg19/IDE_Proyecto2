@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace IDEjames.Arbol
 {
-    class Arbol
+    class arboll
     {
-
         private string codigo;
 
-        public Arbol()
+        public arboll()
         {
             codigo = "digraph G { ";
         }
@@ -30,7 +29,6 @@ namespace IDEjames.Arbol
         {
             this.codigo += " } ";
         }
-    
 
 }
 }

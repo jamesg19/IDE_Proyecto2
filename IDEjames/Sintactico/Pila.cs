@@ -1,4 +1,5 @@
 ﻿
+using IDEjames.Arbol;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace IDEjames.Sintactico
     {
         private List<int> pila;
         private List<string> pila2;
+        private List<string> codigos;
 
         ValorProduccionLexema valorProduccionLexema;
 
@@ -21,13 +23,42 @@ namespace IDEjames.Sintactico
         {
             pila = new List<int>();
             pila2 = new List<string>();
+            codigos = new List<string>();
             this.valorProduccionLexema = valorProduccionLexema;
         }
 
         public void AgregarElemento(int elemento)
         {
             pila.Add(elemento);
-            pila2.Add(valorProduccionLexema.RecuperarValorProduccionLexema(elemento));
+            string valor = valorProduccionLexema.RecuperarValorProduccionLexema(elemento);
+            pila2.Add(valor);
+            codigos.Add(valor);
+
+        }
+
+        public void LimpiarCodigos()
+        {
+
+            codigos.Clear();
+        }
+
+        public void AgregarCodigos(arboll arbol, string valorNodoPadre)
+        {
+
+            for (int i = codigos.Count(); i > 0; i--)
+            {
+                arbol.agregarCodigo(valorNodoPadre + " -> " + codigos.ElementAt(i - 1) + " ; ");
+            }
+
+        }
+
+        public void AgregarElemento(int elemento, arboll arbol, string valorNodoPadre)
+        {
+            pila.Add(elemento);
+            string valor = valorProduccionLexema.RecuperarValorProduccionLexema(elemento);
+            pila2.Add(valor);
+            arbol.agregarCodigo(valorNodoPadre + " -> " + valor + " ; ");
+            //pinche arbol no funciona :(
         }
 
         public int RecuperarUltimoElemento()
@@ -56,11 +87,12 @@ namespace IDEjames.Sintactico
             return pila2.ElementAt(pila2.Count - 1);
         }
 
-        public void Reiniciar()
+        public void Reiniciar(arboll arbol)
         {
-            this.pila.Clear();
             this.AgregarElemento(Lexema.ACEPTACION);
             this.AgregarElemento(Produccion.INICIAL);
+            this.AgregarCodigos(arbol, "INICIO");
+
         }
 
 

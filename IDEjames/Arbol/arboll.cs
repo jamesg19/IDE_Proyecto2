@@ -8,15 +8,18 @@ namespace IDEjames.Arbol
 {
     class arboll
     {
+
         private string codigo;
+        private string codigoMomentaneo;
 
         public arboll()
         {
-            codigo = "digraph G { ";
+            this.codigo = "digraph G { ";
         }
 
         public void agregarCodigo(string codigo)
         {
+
             this.codigo += codigo;
         }
 
@@ -30,5 +33,5 @@ namespace IDEjames.Arbol
             this.codigo += " } ";
         }
 
-}
+    }
 }

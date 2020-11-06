@@ -9,8 +9,6 @@ namespace IDEjames.Arbol
 {
     class FiltroProduccionLexema
     {
-
-
         public static string AgregarNodos(int[] produccionesLexemas, string nodoPadre, ValorProduccionLexema valorProduccionLexema)
         {
             string codigo = "";
@@ -21,121 +19,10 @@ namespace IDEjames.Arbol
             return codigo;
         }
 
-        //no lo uso por el momento
-
         public static string FiltrarProduccionLexema(int produccionLexema)
         {
-            if (produccionLexema == Produccion.INICIAL)
-            {
-                return "INICIAL";
-            }
-            else if (produccionLexema == Produccion.MP)
-            {
-                return "MP";
-            }
-            else if (produccionLexema == Produccion.MP1)
-            {
-                return "MP1";
-            }
-            else if (produccionLexema == Produccion.I)
-            {
-                return "I";
-            }
-            else if (produccionLexema == Produccion.I1)
-            {
-                return "I1";
-            }
-            else if (produccionLexema == Produccion.MP1)
-            {
-                return "MP1";
-            }
-            else if (produccionLexema == Produccion.I2)
-            {
-                return "I1";
-            }
-            else if (produccionLexema == Produccion.L)
-            {
-                return "L1";
-            }
-            else if (produccionLexema == Produccion.L1)
-            {
-                return "L1";
-            }
-            else if (produccionLexema == Produccion.VL)
-            {
-                return "VL";
-            }
-            else if (produccionLexema == Produccion.VL1)
-            {
-                return "VL1";
-            }
-            else if (produccionLexema == Produccion.VL2)
-            {
-                return "VL2";
-            }
-            else if (produccionLexema == Produccion.VL3)
-            {
-                return "VL3";
-            }
-            else if (produccionLexema == Produccion.S)
-            {
-                return "S";
-            }
-            else if (produccionLexema == Produccion.S1)
-            {
-                return "S1";
-            }
-            else if (produccionLexema == Produccion.S2)
-            {
-                return "S2";
-            }
-            else if (produccionLexema == Produccion.S3)
-            {
-                return "S3";
-            }
-            else if (produccionLexema == Produccion.S4)
-            {
-                return "S4";
-            }
-            else if (produccionLexema == Produccion.W)
-            {
-                return "W";
-            }
-            else if (produccionLexema == Produccion.W1)
-            {
-                return "W1";
-            }
-            else if (produccionLexema == Produccion.W2)
-            {
-                return "W2";
-            }
-            else if (produccionLexema == Produccion.D)
-            {
-                return "D";
-            }
-            else if (produccionLexema == Produccion.D0)
-            {
-                return "D0";
-            }
-            else if (produccionLexema == Produccion.D1)
-            {
-                return "D1";
-            }
-            else if (produccionLexema == Produccion.F)
-            {
-                return "F";
-            }
-            else if (produccionLexema == Produccion.F1)
-            {
-                return "F1";
-            }
-            else if (produccionLexema == Produccion.F2)
-            {
-                return "F2";
-            }
-
             //VERIFICANDO SI SON LEXEMANAS
-            else if (produccionLexema == Lexema.ACEPTACION)
+            if (produccionLexema == Lexema.ACEPTACION)
             {
                 return "$";
             }
@@ -268,6 +155,8 @@ namespace IDEjames.Arbol
                 return "NO IDENTIFICADO";
             }
         }
+
+
 
     }
 }

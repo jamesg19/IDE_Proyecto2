@@ -8,6 +8,7 @@ namespace IDEjames.Sintactico
 {
     class Lexema
     {
+
         public const int INC = 0;
         public const int SINO = 1;
         public const int SINO_SI = 2;

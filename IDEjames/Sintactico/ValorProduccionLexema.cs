@@ -9,7 +9,6 @@ namespace IDEjames.Sintactico
     class ValorProduccionLexema
     {
 
-
         int VINC = 0;
         int VSINO = 0;
         int VSINO_SI = 0;
@@ -76,204 +75,204 @@ namespace IDEjames.Sintactico
         {
             if (produccionLexema == Lexema.INC)
             {
-                return "INCREMENTO " + VINC++;
+                return "INCREMENTO" + VINC++;
             }
             else if (produccionLexema == Lexema.SINO)
             {
-                return "SINO " + VSINO++;
+                return "SINO" + VSINO++;
             }
             else if (produccionLexema == Lexema.SINO_SI)
             {
-                return "SINO_SI " + VSINO_SI++;
+                return "SINO_SI" + VSINO_SI++;
             }
             else if (produccionLexema == Lexema.OPRE)
             {
-                return "OPERADOR RELACIONAL " + VOPRE++;
+                return "OPERADOR_RELACIONAL" + VOPRE++;
             }
             else if (produccionLexema == Lexema.PRI)
             {
-                return "PRINCIPAL " + VPRI++;
+                return "PRINCIPAL" + VPRI++;
             }
             else if (produccionLexema == Lexema.PARENTESIS_ABRE)
             {
-                return "( " + VPARENTESIS_ABRE++;
+                return "PARENTESIS_ABRE" + VPARENTESIS_ABRE++;
             }
             else if (produccionLexema == Lexema.PARENTESIS_CIERRA)
             {
-                return ") " + VPARENTESIS_CIERRA++;
+                return "PARENTESIS_CIERRA" + VPARENTESIS_CIERRA++;
             }
             else if (produccionLexema == Lexema.IGUAL)
             {
-                return "= " + VIGUAL++;
+                return "SIGNO_IGUAL" + VIGUAL++;
             }
             else if (produccionLexema == Lexema.SIGNO_SUMA)
             {
-                return "+ " + VSIGNO_SUMA++;
+                return "SIGNO_SUMA" + VSIGNO_SUMA++;
             }
             else if (produccionLexema == Lexema.LLAVE_ABRE)
             {
-                return "{ " + VLLAVE_ABRE++;
+                return "LLAVE_ABRE" + VLLAVE_ABRE++;
             }
             else if (produccionLexema == Lexema.LLAVE_CIERRA)
             {
-                return "} " + VLLAVE_CIERRA++;
+                return "LLAVE_CIERRA" + VLLAVE_CIERRA++;
             }
             else if (produccionLexema == Lexema.COMA)
             {
-                return ", " + VCOMA++;
+                return "COMA" + VCOMA++;
             }
             else if (produccionLexema == Lexema.PUNTO_COMA)
             {
-                return "; " + VPUNTO_COMA++;
+                return "PUNTO_COMA" + VPUNTO_COMA++;
             }
             else if (produccionLexema == Lexema.CAD)
             {
-                return "CADENA " + VCAD++;
+                return "CADENA" + VCAD++;
             }
             else if (produccionLexema == Lexema.NUM)
             {
-                return "NUMERO " + VNUM++;
+                return "NUMERO" + VNUM++;
             }
             else if (produccionLexema == Lexema.IDENT)
             {
-                return "IDENTIFICADOR " + VIDENT++;
+                return "IDENTIFICADOR" + VIDENT++;
             }
             else if (produccionLexema == Lexema.PR)
             {
-                return "PALABRA RESERVADA " + VPR++;
+                return "PALABRA_RESERVADA" + VPR++;
             }
             else if (produccionLexema == Lexema.IMP)
             {
-                return "IMPRIMIR " + VIMP++;
+                return "IMPRIMIR" + VIMP++;
             }
             else if (produccionLexema == Lexema.LE)
             {
-                return "LEER " + VLE++;
+                return "LEER" + VLE++;
             }
             else if (produccionLexema == Lexema.SI)
             {
-                return "SI " + VSI++;
+                return "SI" + VSI++;
             }
             else if (produccionLexema == Lexema.MI)
             {
-                return "MIENTRAS " + VMI++;
+                return "MIENTRAS" + VMI++;
             }
             else if (produccionLexema == Lexema.HA)
             {
-                return "HACER " + VHA++;
+                return "HACER" + VHA++;
             }
             else if (produccionLexema == Lexema.DES)
             {
-                return "DESDE " + VDES++;
+                return "DESDE" + VDES++;
             }
             else if (produccionLexema == Lexema.ACEPTACION)
             {
-                return "$ " + VACEPTACION++;
+                return "ACEPTACION" + VACEPTACION++;
             }
             else if (produccionLexema == Lexema.VACIO)
             {
-                return "ε " + VVACIO++;
+                return "ε" + VVACIO++;
             }
             else if (produccionLexema == Lexema.SIGNO_SUMA)
             {
-                return "+ " + VSIGNO_SUMA++;
+                return "SIGNO_SUMA" + VSIGNO_SUMA++;
             }
             else if (produccionLexema == Lexema.SIGNO_RESTA)
             {
-                return "- " + VSIGNO_RESTA++;
+                return "SIGNO_RESTA" + VSIGNO_RESTA++;
             }
             else if (produccionLexema == Lexema.SIGNO_MULTIPLICACION)
             {
-                return "* " + VSIGNO_MULTIPLICACION++;
+                return "SIGNO_MULTIPLICACION" + VSIGNO_MULTIPLICACION++;
             }
             else if (produccionLexema == Lexema.SIGNO_DIVISION)
             {
-                return "/ " + VSIGNO_DIVISION++;
+                return "SIGNO_DIVISION" + VSIGNO_DIVISION++;
             }
             else if (produccionLexema == Lexema.SIGNO_INCREMENTO)
             {
-                return "++ " + VSIGNO_INCREMENTO++;
+                return "SIGNO_INCREMENTO" + VSIGNO_INCREMENTO++;
             }
             else if (produccionLexema == Lexema.SIGNO_DISMINUCION)
             {
-                return "-- " + VSIGNO_DISMINUCION++;
+                return "SIGNO_DISMINUCION" + VSIGNO_DISMINUCION++;
             }
             else if (produccionLexema == Lexema.HAS)
             {
-                return "HASTA " + VHAS++;
+                return "HASTA" + VHAS++;
             }
             //PRODUCCIONES
             else if (produccionLexema == Produccion.INICIAL)
             {
-                return "INICIAL " + VINICIAL++;
+                return "INICIAL" + VINICIAL++;
             }
             else if (produccionLexema == Produccion.MP)
             {
-                return "MP " + VMP++;
+                return "MP" + VMP++;
             }
             else if (produccionLexema == Produccion.MP1)
             {
-                return "MP1 " + VMP1++;
+                return "MP1" + VMP1++;
             }
             else if (produccionLexema == Produccion.I)
             {
-                return "I " + VI++;
+                return "I" + VI++;
             }
             else if (produccionLexema == Produccion.I1)
             {
-                return "I1 " + VI1++;
+                return "I1" + VI1++;
             }
             else if (produccionLexema == Produccion.I2)
             {
-                return "I2 " + VI2++;
+                return "I2" + VI2++;
             }
             else if (produccionLexema == Produccion.L)
             {
-                return "L " + V_L++;
+                return "L" + V_L++;
             }
             else if (produccionLexema == Produccion.L1)
             {
-                return "L1 " + V_L1++;
+                return "L1" + V_L1++;
             }
             else if (produccionLexema == Produccion.VL)
             {
-                return "VL " + VVL++;
+                return "VL" + VVL++;
             }
             else if (produccionLexema == Produccion.VL1)
             {
-                return "VL1 " + VVL1++;
+                return "VL1" + VVL1++;
             }
             else if (produccionLexema == Produccion.VL2)
             {
-                return "VL2 " + VVL2++;
+                return "VL2" + VVL2++;
             }
             else if (produccionLexema == Produccion.VL3)
             {
-                return "VL3 " + VVL3++;
+                return "VL3" + VVL3++;
             }
             else if (produccionLexema == Produccion.S)
             {
-                return "S " + VS++;
+                return "S" + VS++;
             }
             else if (produccionLexema == Produccion.S1)
             {
-                return "S1 " + VS1++;
+                return "S1" + VS1++;
             }
             else if (produccionLexema == Produccion.S2)
             {
-                return "S2 " + VS2++;
+                return "S2" + VS2++;
             }
             else if (produccionLexema == Produccion.S3)
             {
-                return "S3 " + VS3++;
+                return "S3" + VS3++;
             }
             else if (produccionLexema == Produccion.S4)
             {
-                return "S4 " + VS4++;
+                return "S4" + VS4++;
             }
             else if (produccionLexema == Produccion.W)
             {
-                return "W " + VW++;
+                return "W" + VW++;
             }
             else if (produccionLexema == Produccion.W1)
             {
@@ -281,31 +280,31 @@ namespace IDEjames.Sintactico
             }
             else if (produccionLexema == Produccion.W2)
             {
-                return "W2 " + VW2++;
+                return "W2" + VW2++;
             }
             else if (produccionLexema == Produccion.D)
             {
-                return "D " + VD++;
+                return "D" + VD++;
             }
             else if (produccionLexema == Produccion.D1)
             {
-                return "D1 " + VD1++;
+                return "D1" + VD1++;
             }
             else if (produccionLexema == Produccion.D0)
             {
-                return "D0 " + VD0++;
+                return "D0" + VD0++;
             }
             else if (produccionLexema == Produccion.F)
             {
-                return "D1 " + VF++;
+                return "D1" + VF++;
             }
             else if (produccionLexema == Produccion.F1)
             {
-                return "F1 " + VF1++;
+                return "F1" + VF1++;
             }
             else if (produccionLexema == Produccion.F2)
             {
-                return "F2 " + VF2++;
+                return "F2" + VF2++;
             }
             else
             {

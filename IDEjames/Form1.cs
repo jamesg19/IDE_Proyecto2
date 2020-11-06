@@ -1,4 +1,5 @@
 ﻿using IDEjames.Analizador;
+using IDEjames.Arbol;
 using IDEjames.Sintactico;
 using System;
 using System.Collections;
@@ -27,6 +28,7 @@ namespace IDEjames
         boolean Booleano;
         string archivo;
         Archivo archivoObjeto = new Archivo("");
+        AnalizadorSintaxis analizadorSintaxis;
         
         public Form1()
         {
@@ -48,6 +50,7 @@ namespace IDEjames
             this.enteroo = enteroo;
             this.reservadas = reservadas;
             this.Booleano = Booleano;
+            analizadorSintaxis = new AnalizadorSintaxis();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -253,7 +256,8 @@ namespace IDEjames
         // 
         private void Arbol_Click(object sender, EventArgs e)
         {
-
+            EjecutaConsula controladorConsola = new EjecutaConsula();
+            controladorConsola.EjecutarComando(analizadorSintaxis.GetArbol().getCodigo(), "C:\\Users\\james\\Desktop", "arbol.dot");
         }
     }
 

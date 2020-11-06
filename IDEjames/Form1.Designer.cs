@@ -134,7 +134,7 @@
             // Posicion
             // 
             this.Posicion.AutoSize = true;
-            this.Posicion.Location = new System.Drawing.Point(71, 401);
+            this.Posicion.Location = new System.Drawing.Point(17, 401);
             this.Posicion.Name = "Posicion";
             this.Posicion.Size = new System.Drawing.Size(32, 13);
             this.Posicion.TabIndex = 4;
@@ -143,7 +143,7 @@
             // position
             // 
             this.position.AutoSize = true;
-            this.position.Location = new System.Drawing.Point(119, 401);
+            this.position.Location = new System.Drawing.Point(65, 401);
             this.position.Name = "position";
             this.position.Size = new System.Drawing.Size(25, 13);
             this.position.TabIndex = 5;
@@ -152,7 +152,7 @@
             // Colum
             // 
             this.Colum.AutoSize = true;
-            this.Colum.Location = new System.Drawing.Point(164, 401);
+            this.Colum.Location = new System.Drawing.Point(110, 401);
             this.Colum.Name = "Colum";
             this.Colum.Size = new System.Drawing.Size(51, 13);
             this.Colum.TabIndex = 6;
@@ -161,7 +161,7 @@
             // columna
             // 
             this.columna.AutoSize = true;
-            this.columna.Location = new System.Drawing.Point(231, 401);
+            this.columna.Location = new System.Drawing.Point(177, 401);
             this.columna.Name = "columna";
             this.columna.Size = new System.Drawing.Size(25, 13);
             this.columna.TabIndex = 7;
@@ -183,9 +183,9 @@
             // 
             this.rTxtCodigo.AcceptsTab = true;
             this.rTxtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rTxtCodigo.Location = new System.Drawing.Point(72, 30);
+            this.rTxtCodigo.Location = new System.Drawing.Point(12, 28);
             this.rTxtCodigo.Name = "rTxtCodigo";
-            this.rTxtCodigo.Size = new System.Drawing.Size(850, 356);
+            this.rTxtCodigo.Size = new System.Drawing.Size(780, 356);
             this.rTxtCodigo.TabIndex = 9;
             this.rTxtCodigo.Text = "";
             this.rTxtCodigo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.muestraPosicion);
@@ -194,7 +194,7 @@
             // lblErrores
             // 
             this.lblErrores.AutoSize = true;
-            this.lblErrores.Location = new System.Drawing.Point(287, 401);
+            this.lblErrores.Location = new System.Drawing.Point(233, 401);
             this.lblErrores.Name = "lblErrores";
             this.lblErrores.Size = new System.Drawing.Size(22, 13);
             this.lblErrores.TabIndex = 10;
@@ -203,9 +203,9 @@
             // 
             // rTxtErrores
             // 
-            this.rTxtErrores.Location = new System.Drawing.Point(80, 439);
+            this.rTxtErrores.Location = new System.Drawing.Point(12, 430);
             this.rTxtErrores.Name = "rTxtErrores";
-            this.rTxtErrores.Size = new System.Drawing.Size(842, 146);
+            this.rTxtErrores.Size = new System.Drawing.Size(772, 146);
             this.rTxtErrores.TabIndex = 11;
             this.rTxtErrores.Text = "";
             // 
@@ -216,9 +216,9 @@
             this.Arbol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Arbol.Location = new System.Drawing.Point(577, 390);
             this.Arbol.Name = "Arbol";
-            this.Arbol.Size = new System.Drawing.Size(187, 34);
+            this.Arbol.Size = new System.Drawing.Size(134, 34);
             this.Arbol.TabIndex = 12;
-            this.Arbol.Text = "General Imagen Arbol";
+            this.Arbol.Text = "Generar Imagen";
             this.Arbol.UseVisualStyleBackColor = false;
             this.Arbol.Click += new System.EventHandler(this.Arbol_Click);
             // 

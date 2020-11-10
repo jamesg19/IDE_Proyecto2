@@ -144,13 +144,5 @@ namespace IDEjames.Sintactico
         }
 
 
-
-
-
-
-
-
-
-
     }
 }

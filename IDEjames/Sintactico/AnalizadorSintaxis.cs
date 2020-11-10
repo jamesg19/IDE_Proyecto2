@@ -16,6 +16,8 @@ namespace IDEjames.Sintactico
 {
     class AnalizadorSintaxis
     {
+
+
         TablaAnalisisSintactico tablaAnalisisSintactico;
         int produccionActual;
         Token lexemaActual;
@@ -39,8 +41,9 @@ namespace IDEjames.Sintactico
 
         public void Analizar(List<Token> tokens)
         {
-
+            //AGREGANDO ESTADO FINAL EN LOS TOKENS
             tokens.Add(new Token(null, Lexema.ACEPTACION, null));
+            //PROBANDO
 
             pila.Reiniciar(arbol);
             errores.Clear();
@@ -49,13 +52,14 @@ namespace IDEjames.Sintactico
             vuelta = 0;
             try
             {
-
                 Avanzar(tokens);
             }
             catch
             {
                 SegundoAvanzar(tokens);
             }
+
+
 
             arbol.CerrarArbol();
 
@@ -65,7 +69,6 @@ namespace IDEjames.Sintactico
         {
             try
             {
-
                 errores.Add(new ErrorSintactico(lexemaActual.getFila(), pila.RecuperarUltimoElemento()));
                 produccionActual = Produccion.INICIAL;
                 vuelta++;
@@ -120,6 +123,7 @@ namespace IDEjames.Sintactico
         {
             if (lexemaActual != null)
             {
+
                 if (lexemaActual.getTipo() == pila.RecuperarUltimoElemento())
                 {
                     Reduce();
@@ -140,11 +144,9 @@ namespace IDEjames.Sintactico
 
         private void AgregarProduccionPila(int[] produccion)
         {
-            Console.WriteLine("AGREGANDO PRODUCCION A LA PILA");
             if (produccion != null)
             {
                 string valorNodoPadre = pila.RecuperarValorProduccionLexemaUltimoElemento();
-
 
                 pila.EliminarUltimoElemento();
                 if (produccion.Length == 0)
@@ -155,14 +157,10 @@ namespace IDEjames.Sintactico
                 }
                 else
                 {
-
-                    //LIMPIANDO CODIGOS EN PILA
                     pila.LimpiarCodigos();
 
                     for (int i = produccion.Length; i > 0; i--)
                     {
-
-
 
                         pila.AgregarElemento(produccion[i - 1]);
 
@@ -183,7 +181,6 @@ namespace IDEjames.Sintactico
 
         private void Reduce()
         {
-
             lexemaActual = null;
             pila.EliminarUltimoElemento();
             vuelta++;
@@ -192,6 +189,7 @@ namespace IDEjames.Sintactico
 
         private void ReduceVacio()
         {
+            Console.WriteLine("REDUCE VACIO");
             pila.EliminarUltimoElemento();
         }
 
@@ -204,8 +202,7 @@ namespace IDEjames.Sintactico
             }
             else
             {
-                Console.WriteLine("NO SE PUEDE REALIZAR EL REDUCE");
-                throw new Exception();
+              throw new Exception();
             }
 
         }
@@ -214,41 +211,14 @@ namespace IDEjames.Sintactico
 
 
         //ERRORES SINTACTICOS
-        public void MostrarErrores(RichTextBox richTextBox, DependencyProperty dependencyProperty, Object objetoUnderline)
+        public void MostrarErrores(String richTextBox)
         {
             for (int i = 0; i < errores.Count(); i++)
             {
-                SubrayarError(richTextBox, dependencyProperty, objetoUnderline, errores.ElementAt(i).GetFila());
+               
             }
         }
 
-        private void SubrayarError(RichTextBox richTextBox, DependencyProperty dependencyProperty, Object objetoUnderline, int fila)
-        {
-            Console.WriteLine("ESTE ES EL NUMERO DE FILA: " + fila);
-            try
-            {
-                TextPointer inicio = richTextBox.Selection.Start.GetLineStartPosition(fila);
-                TextPointer fin = richTextBox.Selection.Start.GetLineStartPosition(fila + 1);
-                richTextBox.Selection.Select(inicio, fin);
-                richTextBox.Selection.ApplyPropertyValue(dependencyProperty, objetoUnderline);
-            }
-            catch
-            {
-                try
-                {
-                    TextPointer inicio = richTextBox.Selection.Start.GetLineStartPosition(fila - 1);
-                    TextPointer fin = richTextBox.Selection.Start.GetLineStartPosition(fila);
-                    richTextBox.Selection.Select(inicio, fin);
-                    richTextBox.Selection.ApplyPropertyValue(Inline.TextDecorationsProperty, objetoUnderline);
-                }
-                catch
-                {
-
-                }
-
-            }
-
-        }
 
 
         public arboll GetArbol()

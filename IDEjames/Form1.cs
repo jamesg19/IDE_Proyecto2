@@ -29,7 +29,7 @@ namespace IDEjames
         string archivo;
         Archivo archivoObjeto = new Archivo("");
         AnalizadorSintaxis analizadorSintaxis;
-        
+        AnalizadorSintaxis analizadorSintaxis2 = new AnalizadorSintaxis();
         public Form1()
         {
             InitializeComponent();
@@ -208,25 +208,66 @@ namespace IDEjames
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //string codigo = rTxtCodigo.Text;
+            //String error = rTxtErrores.Text;
+
+            ////limpia el campo de error
+            //limpia_error();
+
+            ////List<String> Errores = analizador.AnalizarCodigo(codigo, rTxtErrores);
+
+            ////lblErrores.Text = "ERRORES: " + Errores.Count();
+            ////AgregarErrores( Errores);
+
+
+
+
+            //AnalizadorTexto analizadorT = new AnalizadorTexto();
+            //List<String> Errores = analizadorT.AnalizarCodigo(codigo, rTxtCodigo);
+            //lblErrores.Text = "ERRORES: " + Errores.Count();
+            //AgregarErrores(Errores);
+
+
+            ////analizador sintactico
+            //Analisis();
+            ////lexico
+            //Determina_Lexema();
+
+
+            //AnalizadorTexto analiza = new AnalizadorTexto();
+            //AnalizadorSintaxis analizadorS = new AnalizadorSintaxis();
+            //analizadorS.Analizar(analiza.getTokens());
+            //analizadorS.MostrarErrores(codigo);
+
+
+            //MuestraError(analizadorS.GetErrores());
+
+
+
+            AnalizadorTexto analizador2 = new AnalizadorTexto();
             string codigo = rTxtCodigo.Text;
-            String error = rTxtErrores.Text;
-           
-            //limpia el campo de error
-            limpia_error();
-
-            List<String> Errores = analizador.AnalizarCodigo(codigo, rTxtErrores);
-
+            List<String> Errores = analizador2.AnalizarCodigo(codigo, rTxtCodigo);
             lblErrores.Text = "ERRORES: " + Errores.Count();
+            limpia_error();
             AgregarErrores( Errores);
 
+            //-------------------ANALIZANDO SINTAXIS-------------------------
 
- 
-            //analizador sintactico
-            Analisis();
-            //lexico
-            Determina_Lexema();
+            analizadorSintaxis2.Analizar(analizador2.getTokens());
+            analizadorSintaxis2.MostrarErrores(codigo);
+
+            //AGREGANDO ERROR EN EL CUADRO DE TEXTO DE ERRORES
+            MuestraError(analizadorSintaxis2.GetErrores());
+
+
+
+
+
+
+
+
         }
-        
+
         //agregar errores
         public void AgregarErrores( List<String> errores)
         {
@@ -236,6 +277,15 @@ namespace IDEjames
                 rTxtErrores.Text += "ERROR " + i + " : " + errores.ElementAt(i) + "\r";
             }
 
+        }
+        //agrega el error
+        private void MuestraError( List<ErrorSintactico> errores)
+        {
+            lblErrores.Text = "  ERRORES SINTACTICOS: " + errores.Count();
+            for (int i = 0; i < errores.Count(); i++)
+            {
+                rTxtErrores.Text += "ERROR SINTACTICO EN LINEA : " + errores.ElementAt(i).GetFila() + "  SE ESPERABA : " + errores.ElementAt(i).GetTokenQueSeEsperaba() + "\r";
+            }
         }
 
         // metodo para eliminar el texto en el campo error
@@ -256,9 +306,23 @@ namespace IDEjames
         // 
         private void Arbol_Click(object sender, EventArgs e)
         {
-            EjecutaConsula controladorConsola = new EjecutaConsula();
-            controladorConsola.EjecutarComando(analizadorSintaxis.GetArbol().getCodigo(), "C:\\Users\\james\\Desktop", "arbol.dot");
+
+            ejecutarCMD();
+
+
         }
+
+        public void ejecutarCMD()
+        {
+            EjecutaConsula controladorConsola = new EjecutaConsula();
+            controladorConsola.EjecutarComando(analizadorSintaxis2.GetArbol().getCodigo(), "C:\\Users\\james\\Desktop", "arbol.dot");
+
+        }
+
+
+
+
+
     }
 
 }

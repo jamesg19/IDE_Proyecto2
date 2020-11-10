@@ -8,6 +8,8 @@ namespace IDEjames.Sintactico
 {
     class Produccion
     {
+        private string valorAsignado;
+
         public const int MP = 100;
         public const int MP1 = 101;
         public const int I = 102;
@@ -35,5 +37,17 @@ namespace IDEjames.Sintactico
         public const int F2 = 124;
 
         public const int INICIAL = 125;
+
+
+
+        public void setValorAsignado(string valorAsignado)
+        {
+            this.valorAsignado = valorAsignado;
+        }
+
+        public string getValorAsignado()
+        {
+            return this.valorAsignado;
+        }
     }
 }

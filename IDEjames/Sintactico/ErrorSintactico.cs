@@ -9,7 +9,6 @@ namespace IDEjames.Sintactico
 {
     class ErrorSintactico
     {
-
         private int fila;
         private string tokenQueSeEsperaba;
 
@@ -28,8 +27,6 @@ namespace IDEjames.Sintactico
         {
             return tokenQueSeEsperaba;
         }
-
-
 
     }
 }

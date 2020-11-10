@@ -85,7 +85,10 @@ namespace IDEjames.Analizador
             tabla[0, 2] = Estado.estadoError;
             tabla[3, 0] = Estado.estadoD2;
             tabla[5, 0] = Estado.estadoD2;
-
+            tabla[0, 10] = Estado.estadoK1;
+            tabla[33, 9] = Estado.estadoK2;
+            tabla[34, 9] = Estado.estadoK2;
+            tabla[34, 0] = Estado.estadoK2;
 
 
 

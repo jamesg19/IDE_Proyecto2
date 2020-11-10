@@ -92,8 +92,12 @@ namespace IDEjames.Sintactico
                 }
                 else
                 {
-                    return new Token(cadena, Token.identificador, Brushes.DarkGoldenrod);
+                    return new Token(cadena, Token.error, Brushes.Black);
                 }
+            }
+            else if (estado == Estado.estadoK2)
+            {
+                return new Token(cadena, Token.identificador, Brushes.DarkGoldenrod);
             }
             else if (estado == Estado.estadoC2)
             {

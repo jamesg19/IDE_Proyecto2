@@ -9,6 +9,7 @@ namespace IDEjames.Arbol
 {
     class FiltroProduccionLexema
     {
+
         public static string AgregarNodos(int[] produccionesLexemas, string nodoPadre, ValorProduccionLexema valorProduccionLexema)
         {
             string codigo = "";
@@ -21,6 +22,7 @@ namespace IDEjames.Arbol
 
         public static string FiltrarProduccionLexema(int produccionLexema)
         {
+            Console.WriteLine("TIPO DE LEXEMA QUE SE ESPERABA -> " + produccionLexema);
             //VERIFICANDO SI SON LEXEMANAS
             if (produccionLexema == Lexema.ACEPTACION)
             {
@@ -155,8 +157,6 @@ namespace IDEjames.Arbol
                 return "NO IDENTIFICADO";
             }
         }
-
-
 
     }
 }

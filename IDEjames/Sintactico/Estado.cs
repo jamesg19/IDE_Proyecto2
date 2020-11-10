@@ -8,7 +8,7 @@ namespace IDEjames.Sintactico
 {
     class Estado
     {
-        private readonly int[] EstadosDeAceptacion = { estadoB1, estadoC1, estadoC2, estadoB3, estadoC3, estadoE3, estadoF3, estadoI3, estadoB4, estadoC4, estadoE4, estadoE, estadoSA, estadoJ };
+        private readonly int[] EstadosDeAceptacion = { estadoB1, estadoC1, estadoC2, estadoB3, estadoC3, estadoE3, estadoF3, estadoI3, estadoB4, estadoC4, estadoE4, estadoE, estadoSA, estadoJ, estadoK2 };
 
         public const int estadoA = 0;
         public const int estadoB1 = 1;
@@ -43,6 +43,8 @@ namespace IDEjames.Sintactico
         public const int estadoSL4 = 30;
         public const int estadoSF = 31;
         public const int estadoError = 32;
+        public const int estadoK1 = 33;
+        public const int estadoK2 = 34;
 
         public Estado()
         {

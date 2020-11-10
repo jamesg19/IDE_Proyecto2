@@ -20,6 +20,7 @@ namespace IDEjames.Arbol
         public void agregarCodigo(string codigo)
         {
 
+
             this.codigo += codigo;
         }
 
@@ -30,6 +31,7 @@ namespace IDEjames.Arbol
 
         public void CerrarArbol()
         {
+
             this.codigo += " } ";
         }
 

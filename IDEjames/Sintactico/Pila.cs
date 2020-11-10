@@ -38,13 +38,15 @@ namespace IDEjames.Sintactico
 
         public void LimpiarCodigos()
         {
-
+            Console.WriteLine("LIMPIO");
             codigos.Clear();
         }
 
         public void AgregarCodigos(arboll arbol, string valorNodoPadre)
         {
-
+            
+            
+            Console.WriteLine();
             for (int i = codigos.Count(); i > 0; i--)
             {
                 arbol.agregarCodigo(valorNodoPadre + " -> " + codigos.ElementAt(i - 1) + " ; ");
@@ -58,7 +60,7 @@ namespace IDEjames.Sintactico
             string valor = valorProduccionLexema.RecuperarValorProduccionLexema(elemento);
             pila2.Add(valor);
             arbol.agregarCodigo(valorNodoPadre + " -> " + valor + " ; ");
-            //pinche arbol no funciona :(
+
         }
 
         public int RecuperarUltimoElemento()
@@ -92,7 +94,7 @@ namespace IDEjames.Sintactico
             this.AgregarElemento(Lexema.ACEPTACION);
             this.AgregarElemento(Produccion.INICIAL);
             this.AgregarCodigos(arbol, "INICIO");
-
+            
         }
 
 

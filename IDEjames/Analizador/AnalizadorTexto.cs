@@ -77,18 +77,13 @@ namespace IDEjames.Analizador
             int vueltas = caracteres.Length - 2;
             estadoActual = Estado.estadoA;
             cadena = "";
-            //Console.WriteLine("numero de caracteres " + caracteres.Length);
-            while (contador<vueltas)
+            while (contador < vueltas)
             {
-                //VALIDANDO SI HAY CAMBIO DE LINEA
-                //---------------------------------------------
+
                 if (simbolo.TipoDeDato(caracteres[contador]) == Simbolo.saltoDeLinea)
                 {
-                    //HAY SALDO DE LINEA POR LO TANTO ->
-                    Console.WriteLine("HAY SALTO DE LINEA");
                     fila++;
                 }
-                //---------------------------------------------
 
                 avanzar(richTextBox);
             }
@@ -108,7 +103,7 @@ namespace IDEjames.Analizador
             Token tokenARevisar = token.TipoDeToken(estadoActual, cadena);
             if (tokenARevisar.getTipo() != Token.espacio && tokenARevisar.getTipo() != Token.saltoDeLinea && tokenARevisar.getTipo() != Token.comentario && tokenARevisar.getTipo() != Token.error && tokenARevisar.getTipo() != null)
             {
-                Console.WriteLine("ESTA ES LA FILA A AGREGAR: " + fila);
+                
                 tokenARevisar.setFila(fila);
                 tokens.Add(tokenARevisar);
             }
@@ -119,9 +114,8 @@ namespace IDEjames.Analizador
         public void avanzar(RichTextBox richTextBox)
         {
 
-            estadoAMover = tablaTransiciones.GetEstadoDestino(estadoActual, simbolo.TipoDeDato(caracteres[contador]));
-            Console.WriteLine("estado actual: "+estadoActual+" caracter: "+simbolo.TipoDeDato(caracteres[contador]));
-            Console.WriteLine(estadoAMover);
+
+            estadoAMover = tablaTransiciones.GetEstadoDestino(estadoActual, simbolo.TipoDeDato(caracteres[contador]));       
             if (estadoAMover == 0)
             {
                 escupirCadena(richTextBox);
@@ -130,13 +124,13 @@ namespace IDEjames.Analizador
             }
             else
             {
-                if (estadoAMover==Estado.estadoError)
+                if (estadoAMover == Estado.estadoError)
                 {
                     escupirCadena(richTextBox);
                     cadena = "";
                     estadoActual = Estado.estadoError;
                     cadena += caracteres[contador];
-                    
+
                     escupirCadena(richTextBox);
                     estadoActual = Estado.estadoA;
                     contador++;
@@ -148,12 +142,13 @@ namespace IDEjames.Analizador
                     cadena += caracteres[contador];
                     contador++;
                 }
-                
+
             }
 
         }
 
-               
+
+
 
         public void LimpiarDatos()
         {

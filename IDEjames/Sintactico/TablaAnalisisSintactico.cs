@@ -89,13 +89,14 @@ namespace IDEjames.Sintactico
         private void AsignarValores()
         {
             tabla[Produccion.INICIAL, Lexema.PRI] = p0;
+            /*
             tabla[Produccion.INICIAL, Lexema.PR] = p10;
             tabla[Produccion.INICIAL, Lexema.IMP] = p12;
             tabla[Produccion.INICIAL, Lexema.LE] = p14;
             tabla[Produccion.INICIAL, Lexema.SI] = p16;
             tabla[Produccion.INICIAL, Lexema.MI] = p18;
             tabla[Produccion.INICIAL, Lexema.HA] = p20;
-            tabla[Produccion.INICIAL, Lexema.DES] = p22;
+            tabla[Produccion.INICIAL, Lexema.DES] = p22;*/
 
 
             tabla[Produccion.MP, Lexema.PRI] = p1;
